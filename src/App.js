@@ -1,7 +1,7 @@
 import React, {useReducer} from 'react';
 import reducer, {initialState} from "./reducers/index"
 import './App.css';
-import {applyNumber, changeOperation, clearDisplay} from "./actions/index";
+import {applyNumber, changeOperation, clearDisplay, mPlus, mR, mC} from "./actions/index";
 
 import TotalDisplay from './components/TotalDisplay';
 import CalcButton from './components/CalcButton';
@@ -23,6 +23,18 @@ function App() {
     dispatch(clearDisplay(e));
   }
 
+  const handleMemPlus = (e) => {
+    dispatch(mPlus(e));
+  }
+
+  const handleMR = (e) => {
+    dispatch(mR(e));
+  }
+
+  const handleMC = (e) => {
+    dispatch(mC(e));
+  }
+
   return (
     <div className="App">
       <nav className="navbar navbar-dark bg-dark">
@@ -40,9 +52,9 @@ function App() {
             </div>
             
             <div className="row">
-              <CalcButton value={"M+"}/>
-              <CalcButton value={"MR"}/>
-              <CalcButton value={"MC"}/>
+              <CalcButton value={"M+"} onClick={() => handleMemPlus()}/>
+              <CalcButton value={"MR"} onClick={() => handleMR()}/>
+              <CalcButton value={"MC"} onClick={() => handleMC()}/>
             </div>
 
             <div  className="row">
